@@ -12,6 +12,11 @@ class ProveedorController extends Controller
         return Proveedor::ingresarProveedor($request);
     }
 
+    public function CambiarEstado(Request $request)
+    {
+        return Proveedor::cambiarEstado($request);
+    }
+
     public function TraerProveedores()
     {
         return Proveedor::traerProveedores();

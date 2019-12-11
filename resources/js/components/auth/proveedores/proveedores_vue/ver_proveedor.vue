@@ -9,7 +9,7 @@
           <q-separator />
           <q-card-section>
             <div class="row justify-start q-col-gutter-md">
-              <div class="col-4 col-md-4">
+              <div class="col-12 col-md-4">
                 <q-input
                   outlined
                   v-model="codigo"
@@ -21,7 +21,7 @@
                 />
               </div>
 
-              <div class="col-4 col-md-4">
+              <div class="col-12 col-md-4">
                 <q-input
                   outlined
                   v-model="rut"
@@ -33,7 +33,7 @@
                 />
               </div>
 
-              <div class="col-4 col-md-4">
+              <div class="col-12 col-md-4">
                 <q-select
                   outlined
                   stack-label
@@ -57,7 +57,7 @@
                   counter
                 />
               </div>
-              <div class="col-4 col-md-4">
+              <div class="col-12 col-md-4">
                 <q-input
                   outlined
                   v-model="fono_emp"
@@ -69,7 +69,7 @@
                 />
               </div>
 
-              <div class="col-4 col-md-4">
+              <div class="col-12 col-md-4">
                 <q-input
                   outlined
                   v-model="pagina"
@@ -81,7 +81,7 @@
                 />
               </div>
 
-              <div class="col-4 col-md-4">
+              <div class="col-12 col-md-4">
                 <q-input
                   outlined
                   v-model="correo_emp"
@@ -99,7 +99,7 @@
           <q-separator />
           <q-card-section>
             <div class="row justify-start q-col-gutter-md">
-              <div class="col-6 col-md-6">
+              <div class="col-12 col-md-6">
                 <q-input
                   outlined
                   v-model="direccion"
@@ -110,7 +110,7 @@
                   counter
                 />
               </div>
-              <div class="col-6 col-md-6">
+              <div class="col-12 col-md-6">
                 <q-input
                   outlined
                   v-model="ciudad"

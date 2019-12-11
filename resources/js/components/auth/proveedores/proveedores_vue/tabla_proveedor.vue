@@ -58,53 +58,17 @@
 
           <q-td key="giro" :props="tabla">{{tabla.row.giro}}</q-td>
 
-          <!-- <q-td key="estado" :props="tabla">
-            {{tabla.row.estado}}
-            <q-popup-edit v-model="tabla.row.estado" buttons>
-              <q-select
-                outlined
-                stack-label
-                v-model="campoUpd"
-                :options="select_estado"
-                option-value="id"
-                option-label="descripcion"
-                label="Seleccione Estado"
-              />
-            </q-popup-edit>
-          </q-td> -->
-
-          <q-td key="estado" :props="tabla">
-            {{tabla.row.estado}}
-            <q-popup-edit v-model="tabla.row.estado" title="Modificar Estado">
-              <template v-slot="{initialValue,validate,set, cancel}">
-                <q-select
-                  standout="bg-blue text-white"
-                  v-model="campoUpd"
-                  :options="select_estado"
-                  option-value="id"
-                  option-label="descripcion"
-                  label="Seleccione Estado"
-                  @keyup.enter.stop
-                >
-                  <template v-slot:after>
-                    <q-btn
-                      color="red"
-                      round
-                      dense
-                      flat
-                      icon="edit"
-                      @click="actualizar_dato(tabla.row.id,'tipo_deuda_id',campoUpd.id)"
-                      @click.stop="set"
-                    />
-
-                    <q-btn flat dense color="negative" icon="cancel" @click.stop="cancel" />
-                  </template>
-                </q-select>
-              </template>
-            </q-popup-edit>
-          </q-td>
+          <q-td key="estado" :props="tabla">{{tabla.row.estado}}</q-td>
 
           <q-td key="opciones" :props="tabla">
+            <q-toggle
+              v-model="tabla.row.estado_id"
+              color="primary"
+              keep-color
+              @input="cambiarEstado(tabla.row.id, tabla.row.estado_id)"
+            >
+              <q-tooltip anchor="bottom middle" self="top middle" :offset="[10, 10]">Cambiar Estado</q-tooltip>
+            </q-toggle>
             <q-btn
               flat
               icon-right="visibility"

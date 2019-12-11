@@ -5,9 +5,10 @@ export default {
             loading: false,
             confirm: false,
             filter: '',
-            campoUpd: '',
+            campoUpd: null,
             select_estado: [],
             errores: [],
+            value: false,
 
             visibleColumns: [
                 'id',
@@ -27,7 +28,7 @@ export default {
                 { classes: 'ellipsis', name: 'giro', align: 'center', label: 'Giro', field: 'giro', sortable: true },
                 { classes: 'ellipsis', name: 'estado', align: 'center', label: 'Estado', field: 'estado', sortable: true },
                 { classes: 'ellipsis', name: 'opciones', align: 'center', label: 'Opciones', field: 'opciones', sortable: true },
-
+                { classes: 'ellipsis', name: 'estado_id', align: 'center', label: 'Estado ID', field: 'estado_id', sortable: true },
             ],
 
             proveedores: [],
@@ -50,8 +51,36 @@ export default {
                 }
             });
         },
+
+        cambiarEstado($prov_id, $estado_id) {
+            const data = {
+                'id': $prov_id,
+                'estado_id': $estado_id
+            }
+
+            axios.post('api/cambiar_estado_prov', data).then((res) => {
+                if (res.data.estado == 'success') {
+                    this.$q.notify({
+                        color: "green-4",
+                        textColor: "white",
+                        icon: "cloud_done",
+                        message: res.data.mensaje
+                    });
+                    this.onRefresh();
+                } else {
+                    this.$q.notify({
+                        color: "red-4",
+                        textColor: "white",
+                        icon: "cloud_done",
+                        message: res.data.mensaje
+                    });
+                }
+            });
+        },
+
         onRefresh() {
             this.loading = true;
+            this.proveedores = [];
             this.traerProveedores();
             setTimeout(() => {
                 this.loading = false;

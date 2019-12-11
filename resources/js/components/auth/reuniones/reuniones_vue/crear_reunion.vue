@@ -9,7 +9,7 @@
           <q-separator />
           <q-card-section>
             <div class="row justify-start q-col-gutter-md">
-              <div class="col-3 col-md-3">
+              <div class="col-12 col-md-3">
                 <q-input
                   outlined
                   v-model="fecha"
@@ -18,7 +18,7 @@
                   type="date"
                 />
               </div>
-              <div class="col-3 col-md-3">
+              <div class="col-12 col-md-3">
                 <q-input
                   v-model="hora"
                   outlined
@@ -28,7 +28,7 @@
                 />
               </div>
 
-              <div class="col-6 col-md-6">
+              <div class="col-12 col-md-6">
                 <q-input
                   outlined
                   v-model="titulo"

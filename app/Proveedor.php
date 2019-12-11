@@ -46,6 +46,22 @@ class Proveedor extends Model
         }
     }
 
+    protected function cambiarEstado($request)
+    {
+        /* dd($request->all()); */
+        $prov = Proveedor::find($request->id);
+        if ($request->estado_id == true) {
+            $prov->estado_prov_id = 1;
+        } else {
+            $prov->estado_prov_id = 2;
+        }
+        if ($prov->save()) {
+            return ['estado' => 'success', 'mensaje' => 'Estado actualizado correctamente.'];
+        } else {
+            return ['estado' => 'failed', 'mensaje' => 'A ocurrido un error, intenta nuevamente.'];
+        }
+    }
+
     protected function traerProveedores()
     {
         $prov = DB::table('proveedores as p')
@@ -60,7 +76,8 @@ class Proveedor extends Model
                 'p.direccion',
                 'p.ciudad',
                 'g.descripcion as giro',
-                'ep.descripcion as estado'
+                'ep.descripcion as estado',
+                'p.estado_prov_id as estado_id'
 
             ])
             ->join('giros_prov as g', 'g.id', 'p.giro_prov_id')
@@ -68,6 +85,13 @@ class Proveedor extends Model
             ->get();
 
         if (!$prov->isEmpty()) {
+            foreach ($prov as $key) {
+                if ($key->estado_id == 1) {
+                    $key->estado_id = true;
+                } else {
+                    $key->estado_id = false;
+                }
+            }
             return ['estado' => 'success', 'proveedores' => $prov];
         } else {
             return ['estado' => 'failed', 'mensaje' => 'No se encuentran Proveedores ingresados.'];
