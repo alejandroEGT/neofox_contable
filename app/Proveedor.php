@@ -46,6 +46,11 @@ class Proveedor extends Model
         }
     }
 
+    protected function actualizarProveedor($request){
+        $prov = Proveedor::find($request->id);
+        /* $prov-> */
+    }
+
     protected function cambiarEstado($request)
     {
         /* dd($request->all()); */
